@@ -6,7 +6,7 @@ const prediction = document.getElementById('prediction');
 // Original code from https://kmtabish.medium.com/access-devices-camera-from-static-html-page-using-javascript-camera-api-7b0117f4e2db
 var ctx;
 
-if (navigator && navigator.mediaDevices) {
+if (navigator.mediaDevices.getUserMedia) {
   const options = { audio: false, video: { facingMode: "user", width: 300, height: 300 } };
   navigator.mediaDevices.getUserMedia(options)
     .then(function(stream) {

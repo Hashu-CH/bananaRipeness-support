@@ -5,23 +5,22 @@ const prediction = document.getElementById('prediction');
 
 // Original code from https://kmtabish.medium.com/access-devices-camera-from-static-html-page-using-javascript-camera-api-7b0117f4e2db
 var ctx;
-if(navigator && navigator.mediaDevices){
-    const options = { audio: false, video: { facingMode: "user", width: 300, height: 300  } }
-    navigator.mediaDevices.getUserMedia(options)
+
+if (navigator && navigator.mediaDevices) {
+  const options = { audio: false, video: { facingMode: "user", width: 300, height: 300 } };
+  navigator.mediaDevices.getUserMedia(options)
     .then(function(stream) {
-        video = document.querySelector('video');
-        video.srcObject = stream;
-        video.onloadedmetadata = function(e) {
-          video.play();
-        };
-        ctx = photo.getContext('2d');
+      video.srcObject = stream;
+      video.onloadedmetadata = function(e) {
+        video.play();
+      };
+      ctx = photo.getContext('2d');
     })
     .catch(function(err) {
-        console.log('err');
+      console.error('Error accessing camera:', err);
     });
-
 } else {
-    console.log("camera API is not supported by your browser")
+  console.log("Camera API is not supported by your browser");
 }
 
 

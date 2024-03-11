@@ -3,16 +3,13 @@ const photo = document.getElementById('photo');
 const button = document.getElementById('capture');
 const prediction = document.getElementById('prediction');
 
-// Original code from https://kmtabish.medium.com/access-devices-camera-from-static-html-page-using-javascript-camera-api-7b0117f4e2db
-var ctx;
-
 navigator.mediaDevices.getUserMedia({ video: true })
   .then(stream => {
     video.srcObject = stream;
   })
   .catch(err => console.error(err));
 
-
+var ctx;
 // When Capture Clicked
 button.addEventListener('click', async () => {
   prediction.textContent = 'Processing image...';
